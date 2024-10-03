@@ -1,0 +1,42 @@
+<div [formGroup]="formId">
+  <div formArrayName="formArr">
+    <div [formGroupName]="index" class="child-container">
+      <button
+        class="child__close-btn"
+        (click)="removeForm.emit(index)"
+      ></button>
+      <div class="form-item form-item--country">
+        <div class="form-item--country-wrap">
+          <label>Country</label>
+          <input
+            #country
+            formControlName="country"
+            ttValidationMessage
+            (input)="setCountrySuggestions(country.value)"
+          />
+        </div>
+        <div
+          *ngIf="countrySuggestions.length"
+          class="form-item--country-suggestion"
+        >
+          <ul>
+            <li
+              *ngFor="let suggestion of countrySuggestions"
+              (click)="onCountrySelectionChange(suggestion)"
+            >
+              {{ suggestion }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="form-item">
+        <label>Username</label>
+        <input formControlName="username" ttValidationMessage />
+      </div>
+      <div class="form-item">
+        <label>Birthday</label>
+        <input formControlName="birthday" ttValidationMessage />
+      </div>
+    </div>
+  </div>
+</div>

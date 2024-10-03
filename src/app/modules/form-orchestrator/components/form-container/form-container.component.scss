@@ -1,0 +1,27 @@
+.form {
+  &__content {
+    display: flex;
+  }
+
+  &__add-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 234px;
+    min-width: 234px;
+    background: linear-gradient(90deg, #d3d3d3 0%, #fff 100%);
+    border: 1px dashed grey;
+    border-radius: 5px;
+
+    &:before {
+      content: "+";
+      font-size: 40px;
+      color: blue;
+      width: 60px;
+      height: 60px;
+      border: 1px dashed blue;
+      border-radius: 50%;
+      line-height: 50px;
+    }
+  }
+}

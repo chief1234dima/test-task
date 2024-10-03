@@ -1,0 +1,13 @@
+<form [formGroup]="form" class="form__container">
+  <div class="form-header">
+    <button (click)="submit()" class="form__submit-btn">Submit</button>
+  </div>
+  <div class="form__content">
+    <tt-form-list
+      [formId]="form"
+      [list]="formArr"
+      (removeForm)="removeForm($event)"
+    ></tt-form-list>
+    <button (click)="addForm()" class="form__add-btn"></button>
+  </div>
+</form>

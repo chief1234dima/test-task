@@ -1,0 +1,9 @@
+<div [formGroup]="formId" class="list-container">
+  <div *ngFor="let item of list.controls; let i = index">
+    <tt-form-list-item
+      [formId]="formId"
+      [index]="i"
+      (removeForm)="removeForm.emit($event)"
+    ></tt-form-list-item>
+  </div>
+</div>
