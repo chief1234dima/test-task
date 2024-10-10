@@ -1,21 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormControls, FormStatus } from '../../../../shared/enum';
 import { countryValidator, UsernameValidator } from '../../validators';
 import { map } from 'rxjs/operators';
 import { FormOrchestratorService } from '../../services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'tt-form-container',
   templateUrl: './form-container.component.html',
   styleUrl: './form-container.component.scss',
 })
-export class FormContainerComponent {
+export class FormContainerComponent implements OnDestroy {
   constructor(
     private fb: FormBuilder,
     private usernameValidator: UsernameValidator,
     private formService: FormOrchestratorService,
   ) {}
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
   form: FormGroup = this.fb.group({
     [FormControls.Array]: this.fb.array([]),
@@ -23,6 +28,7 @@ export class FormContainerComponent {
   isSubmitting = false;
   timer = 0;
   timerInterval: any;
+  subscription: Subscription;
 
   invalidFormCount$ = this.form.valueChanges.pipe(
     map(
@@ -79,9 +85,11 @@ export class FormContainerComponent {
 
   completeSubmission(): void {
     this.clearTimer();
-    this.formService.submitForm(this.form.value).subscribe((result) => {
-      console.log(result);
-    });
+    this.subscription = this.formService
+      .submitForm(this.form.value)
+      .subscribe((result) => {
+        console.log(result);
+      });
   }
 
   createChildForm(): FormGroup {
