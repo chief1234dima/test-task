@@ -1,6 +1,7 @@
 .form {
   &__content {
     display: flex;
+    flex-wrap: wrap;
   }
 
   &__add-btn {
@@ -23,5 +24,21 @@
       border-radius: 50%;
       line-height: 50px;
     }
+  }
+
+  &__action-btn {
+    margin: 0 10px 10px;
+    padding: 5px 10px;
+    background-color: deepskyblue;
+    border: none;
+    border-radius: 5px;
+
+    &--cancel {
+      background-color: red;
+    }
+  }
+
+  &__counter {
+    color: red;
   }
 }

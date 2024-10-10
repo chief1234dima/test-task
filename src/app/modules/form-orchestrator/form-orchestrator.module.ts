@@ -7,6 +7,7 @@ import {
 } from './components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationMessageDirective } from './directives';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { ValidationMessageDirective } from './directives';
     FormListItemComponent,
     ValidationMessageDirective,
   ],
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, SharedModule],
   exports: [FormContainerComponent],
 })
 export class FormOrchestratorModule {}

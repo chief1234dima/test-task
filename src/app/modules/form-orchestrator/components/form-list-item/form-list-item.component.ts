@@ -1,22 +1,14 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Country, FormControls } from '../../../../shared/enum';
-import { FormOrchestratorService } from '../../services/form-orchestrator.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'tt-form-list-item',
   templateUrl: './form-list-item.component.html',
   styleUrl: './form-list-item.component.scss',
 })
-export class FormListItemComponent implements OnDestroy {
-  constructor(private formService: FormOrchestratorService) {}
+export class FormListItemComponent {
+  constructor() {}
 
   @Input() formId: FormGroup;
   @Input() index: number;
@@ -24,11 +16,7 @@ export class FormListItemComponent implements OnDestroy {
 
   countries: string[] = Object.values(Country);
   countrySuggestions: string[] = [];
-  subscription: Subscription;
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+  currentDate = new Date().toISOString().split('T')[0];
 
   setCountrySuggestions(value: string): void {
     this.countrySuggestions = value

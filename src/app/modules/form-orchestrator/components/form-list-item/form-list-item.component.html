@@ -7,7 +7,7 @@
       ></button>
       <div class="form-item form-item--country">
         <div class="form-item--country-wrap">
-          <label>Country</label>
+          <label ttTooltip="This is a tooltip">Country</label>
           <input
             #country
             formControlName="country"
@@ -30,12 +30,17 @@
         </div>
       </div>
       <div class="form-item">
-        <label>Username</label>
+        <label ttTooltip="This is a tooltip">Username</label>
         <input formControlName="username" ttValidationMessage />
       </div>
       <div class="form-item">
-        <label>Birthday</label>
-        <input formControlName="birthday" ttValidationMessage />
+        <label ttTooltip="This is a tooltip">Birthday</label>
+        <input
+          formControlName="birthday"
+          ttValidationMessage
+          type="date"
+          [max]="currentDate"
+        />
       </div>
     </div>
   </div>

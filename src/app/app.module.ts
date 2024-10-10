@@ -11,7 +11,7 @@ import { MockBackendInterceptor } from './shared/mock-backend/mock-backend.inter
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormOrchestratorModule } from './modules/form-orchestrator/form-orchestrator.module';
 import { ApiAbstractAdapter } from './api/abstract-adapters';
-import { ApiAdapter } from './api/occ';
+import { ApiAdapter } from './api/adapters';
 
 @NgModule({
   declarations: [AppComponent],

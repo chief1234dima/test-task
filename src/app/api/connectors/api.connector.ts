@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiAbstractAdapter } from '../abstract-adapters';
-import { CheckUserResponseData } from '../../shared/interface/responses';
+import {
+  CheckUserResponseData,
+  SubmitFormResponseData,
+} from '../../shared/interface/responses';
 
 @Injectable({ providedIn: 'root' })
 export class ApiConnector {
@@ -9,5 +12,9 @@ export class ApiConnector {
 
   validateUser(username: string): Observable<CheckUserResponseData> {
     return this.adapter.validateUser(username);
+  }
+
+  submitForm(data: object): Observable<SubmitFormResponseData> {
+    return this.adapter.submitForm(data);
   }
 }

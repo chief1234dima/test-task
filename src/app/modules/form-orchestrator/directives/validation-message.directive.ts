@@ -1,7 +1,6 @@
 import {
   Directive,
   ElementRef,
-  Input,
   OnDestroy,
   OnInit,
   Renderer2,
